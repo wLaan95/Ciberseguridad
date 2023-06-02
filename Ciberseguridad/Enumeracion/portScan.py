@@ -2,7 +2,6 @@
 
 # Importamos los modulos necesarios
 import os
-import ipaddress
 import socket
 from termcolor import colored
 
@@ -24,8 +23,9 @@ try:
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 s.settimeout(0.1)
 
-                #print(colored(f"[*] Conectando con el puerto {puerto}...", "cyan"))
+                # Conectamos con el puerto correspondiente
                 respuesta = s.connect_ex((host, puerto))
+                
                 # Comprobamos el resultado de la conexión
                 if respuesta == 0:
                     # Conexión aceptada
@@ -46,7 +46,7 @@ try:
             if len(lista_puertos) > 0:
                 print(colored(f"[*] Se han encontrado {len(lista_puertos)} puertos abiertos en {host}", "green"))
             else:
-                print(colored("\n[!] ERROR: Saliendo del programa...", "colored"))
+                print(colored("\n[!] ERROR: Saliendo del programa...", "red"))
                 exit()
 except Exception as e:
     print(colored(f"\n[!] ERROR: Saliendo del programa...", "red"))

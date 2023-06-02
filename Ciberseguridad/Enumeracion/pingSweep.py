@@ -7,16 +7,15 @@ from termcolor import colored
 
 try:
     while True:
-        lista_ip = list()
-
-        # Especificamos la red en formato CIDR
-        red = input("Introduzca la red que quiere escanear en formato CIDR: ")
-        print(colored(f"\n[*] Escaneando la red {red}...", "yellow"))
-
-        # Recorremos las direcciones útiles de la red
         try:
+            lista_ip = list()
+
+            # Especificamos la red en formato CIDR
+            red = input("Introduzca la red que quiere escanear en formato CIDR: ")
+            print(colored(f"\n[*] Escaneando la red {red}...", "yellow"))
+
+            # Recorremos las direcciones útiles de la red
             for host in ipaddress.IPv4Network(red).hosts():
-                # print(colored(f"[*] Escaneando la dirección {host}", "cyan"))
                 respuesta = os.system(f"ping -c 1 {host} > /dev/null")
 
                 # Si respuesta es 0, el host ha respondido a nuestro ping
@@ -24,7 +23,7 @@ try:
                     print(colored(f"[*] Encontrado un live host en {host}", "green"))
                     lista_ip.append(host)
 
-            if len(listas_ip) > 0:
+            if len(lista_ip) > 0:
                 print(colored(f"[*] Se han encontrado {len(lista_ip)} live hosts", "cyan"))
             else:
                 print(colored("[*] No se han encontrado live hosts", "cyan"))

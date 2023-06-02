@@ -2,7 +2,6 @@
 
 # Importamos los modulos necesarios
 import requests
-import os
 from termcolor import colored
 
 try:
