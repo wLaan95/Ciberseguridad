@@ -49,5 +49,5 @@ try:
                 print(colored("\n[!] ERROR: Saliendo del programa...", "colored"))
                 exit()
 except Exception as e:
-    print(colored(f"\n[!] ERROR: {str(e)}. Saliendo del programa..."), "red")
+    print(colored(f"\n[!] ERROR: Saliendo del programa...", "red"))
     exit()
